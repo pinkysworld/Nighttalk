@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minh.systems/Nighttalk/sitemap.xml
