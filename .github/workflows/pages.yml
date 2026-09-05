@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Check out site
         uses: actions/checkout@v4
+      - name: Validate public pages and support links
+        run: python3 tests/validate_site.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
