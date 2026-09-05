@@ -15,6 +15,10 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+html { scroll-padding-top: 100px; }
+body { overflow-wrap: break-word; }
+@media (max-width: 480px) { .nav { flex-direction: column; } .callout { flex-direction: column; align-items: flex-start; } }
+@media (prefers-color-scheme: dark) { .prose p, .prose li { color: #d1dff0 !important; } a { color: #aacfff; } .button-secondary { color: #09182f; } }
 
 body {
   margin: 0;

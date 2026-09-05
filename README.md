@@ -8,6 +8,7 @@ This repository hosts NightTalk’s App Store-facing public website through GitH
 - Privacy Policy: `https://minh.systems/Nighttalk/privacy.html`
 - Support: `https://minh.systems/Nighttalk/support.html`
 - Terms: `https://minh.systems/Nighttalk/terms.html`
+- User guide: `https://minh.systems/Nighttalk/documentation.html`
 
 ## Publication
 
