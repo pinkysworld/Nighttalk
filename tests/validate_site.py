@@ -29,7 +29,10 @@ class Page(HTMLParser):
             if a.get("rel") == "canonical": self.canonical.append(a["href"])
             elif a.get("href"): self.links.append(a["href"])
         if tag == "html": assert a.get("lang") == "en"
-        if tag == "img": assert "alt" in a
+        if tag == "img":
+            assert "alt" in a
+            self.links.append(a["src"])
+            assert a.get("width") and a.get("height")
     def handle_endtag(self, tag):
         assert self.stack and self.stack.pop() == tag, (self.path.name, "unbalanced", tag)
 pages = {p.name: Page(p) for p in ROOT.glob("*.html")}
@@ -40,6 +43,8 @@ for name,p in pages.items():
     assert p.tags.count("h1") == 1, name
     assert p.tags.count("main") == 1 and "main-content" in p.ids, name
     assert "script" not in p.tags and "form" not in p.tags and "iframe" not in p.tags, name
+    assert p.tags.count("img") == 2, (name, "header and footer app logos")
+    assert "assets/favicon.png" in p.links and "assets/app-icon.png" in p.links, name
     assert p.canonical == ["https://minh.systems/Nighttalk/" + ("" if name == "index.html" else name)]
     for required in ["tutorial.html","documentation.html","support.html","privacy.html","terms.html","mailto:mip@gmx.biz"]:
         assert required in p.links, (name, "missing navigation", required)
