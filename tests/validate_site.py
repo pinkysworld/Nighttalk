@@ -43,7 +43,8 @@ for name,p in pages.items():
     assert p.tags.count("h1") == 1, name
     assert p.tags.count("main") == 1 and "main-content" in p.ids, name
     assert "script" not in p.tags and "form" not in p.tags and "iframe" not in p.tags, name
-    assert p.tags.count("img") == 2, (name, "header and footer app logos")
+    assert p.tags.count("img") == 3, (name, "header and footer app logos plus studio wordmark")
+    assert "https://minh.systems/impressum/" in p.links and "https://minh.systems/datenschutz/" in p.links, (name, "studio legal links")
     assert "assets/favicon.png" in p.links and "assets/app-icon.png" in p.links, name
     assert p.canonical == ["https://minh.systems/Nighttalk/" + ("" if name == "index.html" else name)]
     for required in ["tutorial.html","documentation.html","support.html","privacy.html","terms.html","mailto:mip@gmx.biz"]:
